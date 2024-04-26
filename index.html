@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Image Upload</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="body">
+    <div class="navbar">
+      <div class="navbar-left">
+        <h1>Recipe Generation from Food Images using Deep Learning</h1>
+      </div>
+      <div class="navbar-right">
+        <a href="#">About Us</a>
+        <a href="#">Contact Us</a>
+      </div>
+    </div>
+    <div class="container">
+      <div class="content">
+        <div class="upload-section">
+          <!-- <h2>Upload Your Food Image</h2> -->
+          <img src="upload.svg" alt="Additional Image">
+          <input type="file" id="userImageInput" accept="image/*">
+          <button id="uploadButton">Upload Food Image</button>
+          <!-- <button id="sampleImageButton">Choose from Sample Images</button> -->
+        </div>
+        <!-- <div class="preview-section" style="width: 404px;">
+        <h2></h2>
+        <div id="previewImage">
+          <img src="image.jpg" alt="" style="width: 404px;
+          height: 173px;">
+        </div>
+        <div class="ingredients-section">
+          <h2>Food Ingredients</h2>
+          <textarea id="ingredientsInput" rows="6" placeholder="Enter food ingredients..."></textarea>
+        </div>
+      </div> -->
+      </div>
+    </div>
+  </div>
+  <script>
+    document.getElementById('uploadButton').addEventListener('click', function () {
+      document.getElementById('userImageInput').click();
+    });
+
+    document.getElementById('userImageInput').addEventListener('change', function (event) {
+      const file = event.target.files[0];
+      const reader = new FileReader();
+
+      reader.onload = function (e) {
+        localStorage.setItem('selectedImage', e.target.result);
+        window.location.href = 'recipe.html';
+      };
+
+      reader.readAsDataURL(file);
+    });
+  </script>
+</body>
+
+</html>
